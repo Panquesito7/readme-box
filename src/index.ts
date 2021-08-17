@@ -1,5 +1,4 @@
 import { request } from '@octokit/request'
-import * as core from '@actions/core';
 
 export interface ReadmeBoxOpts {
   owner: string
@@ -100,7 +99,7 @@ export class ReadmeBox {
       owner: this.owner,
       repo: this.repo,
       content: Buffer.from(opts.content).toString('base64'),
-      path: opts.path || core.getInput('file-to-use'),
+      path: opts.path || path_to_use,
       message: opts.message || `Updating the \`${path_to_use}\`\ file`,
       sha: opts.sha,
       branch: opts.branch || 'main'
