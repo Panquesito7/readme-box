@@ -1,12 +1,12 @@
 {
   "name": "readme-box",
-  "author": "Jason Etcovitch",
-  "description": "Lil' helper for replacing a section of the contents of a README.",
+  "author": "Jason Etcovitch (edited by Panquesito7)",
+  "description": "Lil' helper for replacing a section of the contents of a file (edited by Panquesito7).",
   "version": "1.0.0",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/JasonEtco/readme-box"
+    "url": "https://github.com/Panquesito7/readme-box"
   },
   "scripts": {
     "start": "tsdx watch",
@@ -33,6 +33,7 @@
     "singleQuote": true
   },
   "dependencies": {
+    "@actions/core": "^1.4.0",
     "@octokit/request": "^5.6.0"
   },
   "devDependencies": {

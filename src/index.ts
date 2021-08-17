@@ -1,4 +1,5 @@
 import { request } from '@octokit/request'
+import * as core from '@actions/core';
 
 export interface ReadmeBoxOpts {
   owner: string
@@ -30,7 +31,7 @@ export class ReadmeBox {
     this.owner = opts.owner
     this.repo = opts.repo
     this.token = opts.token
-    this.branch = opts.branch || 'master'
+    this.branch = opts.branch || 'main'
 
     this.request = request.defaults({
       headers: {
@@ -67,10 +68,12 @@ export class ReadmeBox {
   }
 
   async getReadme() {
-    const { data } = await this.request('GET /repos/:owner/:repo/readme', {
+    const core = require('@actions/core');
+    const { data } = await this.request('GET /repos/:owner/:repo/contents/:file?ref=:ref', {
       owner: this.owner,
       repo: this.repo,
-      ref: this.branch
+      ref: this.branch,
+      file: core.getInput('file-to-use')
     })
 
     // The API returns the blob as base64 encoded, we need to decode it
@@ -91,14 +94,16 @@ export class ReadmeBox {
     message?: string
     branch?: string
   }) {
+    const core = require('@actions/core');
+    const path_to_use = core.getInput('file-to-use');
     return this.request('PUT /repos/:owner/:repo/contents/:path', {
       owner: this.owner,
       repo: this.repo,
       content: Buffer.from(opts.content).toString('base64'),
-      path: opts.path || 'README.md',
-      message: opts.message || 'Updating the README!',
+      path: opts.path || core.getInput('file-to-use'),
+      message: opts.message || `Updating the \`${path_to_use}\`\ file`,
       sha: opts.sha,
-      branch: opts.branch || 'master'
+      branch: opts.branch || 'main'
     })
   }
 
