@@ -2,6 +2,11 @@
 <p align="center">Lil' helper for replacing a section of the contents of a README.<p>
 <p align="center"><a href="https://npmjs.com/package/readme-box"><img src="https://badgen.net/npm/v/readme-box" alt="NPM"></a> <img alt="CI" src="https://github.com/JasonEtco/readme-box/workflows/CI/badge.svg" /> <a href="https://codecov.io/gh/JasonEtco/readme-box/"><img src="https://badgen.now.sh/codecov/c/github/JasonEtco/readme-box" alt="Codecov"></a></p>
 
+> **Note:**
+>
+> This tool was modified to properly work with the [Awesome GitHub Profiles](https://github.com/EddieHubCommunity/awesome-github-profiles) repository.\
+> The original tool can be found here: <https://github.com/JasonEtco/readme-box>
+
 ## Usage
 
 ### Installation
